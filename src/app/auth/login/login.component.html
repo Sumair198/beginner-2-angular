@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center align-items-center mt-4">
+    <form class="w-50 p-4 border rounded shadow" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="text" ngModel name="username" required #username="ngModel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text text-danger" *ngIf="username.invalid && username.touched">Name is required</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" ngModel required #password="ngModel" name="password" class="form-control" id="exampleInputPassword1">
+        <div id="emailHelp" class="form-text text-danger" *ngIf="password.invalid && password.touched">Password is required</div>
+      </div>
+      <button [disabled]="loginForm.invalid" class="btn btn-primary w-100">Login</button>
+    </form>
+  </div>
+  
+
+
+
+
+
+<!-- <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)">
+    <input type="text" placeholder="Enter name" ngModel name="username"><br><br>
+    <input type="password" placeholder="Enter password" ngModel name="password"><br><br>
+    <button>Login</button>
+</form> -->
+
+<h3>{{message}}</h3>
