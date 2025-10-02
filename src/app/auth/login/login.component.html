@@ -16,7 +16,10 @@
   
 
 
-
+<select name="" id="" >
+  <option disabled selected value="">Select Location</option>
+  <option *ngFor='let userLocation of locationData.data.locations' value="">{{userLocation.locationName}}</option>
+</select>
 
 
 <!-- <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)">

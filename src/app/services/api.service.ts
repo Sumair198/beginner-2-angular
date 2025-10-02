@@ -11,6 +11,7 @@ export class ApiService {
 
   private baseUrl = environment.apiBaseUrl;
   private breezeAPiUrl = environment.breezeAPiUrl;
+  private usersData = environment.usersData
 
 
   constructor(public http : HttpClient) { }
@@ -22,5 +23,9 @@ export class ApiService {
   get(endpoint : string , params  :any)
   {
     return this.http.get(`${this.breezeAPiUrl}${'/api/'}${endpoint}` , {params})
+  }
+  getUsers(endpoint : any)
+  {
+    return this.http.get(`${this.usersData}${endpoint}`)
   }
 }

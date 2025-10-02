@@ -17,4 +17,9 @@ export class AuthService {
   {
     return this.apiservice.get('TalkCheckinPhaseTwo/GetLocation?PracticeCode=1011163', {PracticeCode : practice_code})
   }
+  getUsersData()
+  {
+    return this.apiservice.getUsers('users')
+  }
+
 }

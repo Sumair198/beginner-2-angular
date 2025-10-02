@@ -44,6 +44,92 @@
 <p>{{currentValue}}</p>
 
 <input type="text" [value]="currentValue" [(ngModel)]="currentValue">
+<br>
+simple array
+<ul>
+  <li *ngFor="let skill of skills">{{skill}}</li>
+</ul>
+
+simple nested object only
+<p>{{employee.name}} {{employee.address.city}} {{employee.address.country}}</p>
+
+<div *ngFor="let dept of departments">
+  <h3>{{dept.name}}</h3>
+  <div *ngFor="let item of dept.employees">
+    <p>{{item}}</p>
+  </div>
+</div>
+<hr>
+<div>
+  <h3>1 : User Prfile</h3>
+  <p>Name : {{userProfile.name}} , Age : {{userProfile.age}}</p>
+</div>
+<div>
+  <h3> 2 : User Hobbies</h3>
+  <p *ngFor='let hobby of userProfile.hobbies'> {{hobby}}</p>
+</div>
+<div>
+  <h3>3 : User Address</h3>
+  <p>City : {{userProfile.address.city}} , Zip : {{userProfile.address.zip}}</p>
+</div>
+
+<hr>
+<hr>
+<div>
+  <h5>{{company.name}} (Since {{company.established}})</h5>
+</div>
+
+<div *ngFor='let dept of company.departments'>
+  <p>{{dept.deptName}} Department - Manager : {{dept.manager}}</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+        <!-- <th scope="col">Action</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let item of dept.employees'>
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.role}}</td>
+        <!-- <td><button (click)="showEmployee(item)">View</button></td> -->
+      </tr>
 
 
-<router-outlet></router-outlet>
+    </tbody>
+  </table>
+
+  <table class="table">
+    <tr>
+      <th>First Name</th>
+      <th>last Name</th>
+      <th>Maiden Name</th>
+      <th>Age</th>
+    </tr>
+    <tr *ngFor='let user of usersArr'>
+      <td>{{user.firstname}}</td>
+      <td>{{user.lastname}}</td>
+      <td>{{user.maidenname}}</td>
+      <td>{{user.age}}</td>
+    </tr>
+  </table>
+
+  <br>
+<!-- <mat-spinner></mat-spinner> -->
+<!-- <button mat-raised-button color="primary">Click Me</button> -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <router-outlet></router-outlet>

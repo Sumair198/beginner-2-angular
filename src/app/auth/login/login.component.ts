@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { loginModel } from '../../models/login';
+import {UtillsService} from '../../generic/utills.service'
 
 
 @Component({
@@ -10,11 +11,13 @@ import { loginModel } from '../../models/login';
 })
 export class LoginComponent {
 
-  constructor(public auth: AuthService) { }
-
+  constructor(public auth: AuthService ,public utills : UtillsService) { }
+locationData : any =""
   ngOnInit() {
     this.auth.getLocation('1011163').subscribe((res: any) => {
       console.log(res)
+      this.locationData = res
+     
     })
     localStorage.setItem('username', 'sumair')
     sessionStorage.setItem('username', 'faraz')
@@ -33,7 +36,12 @@ export class LoginComponent {
   loginUser(data: loginModel) {
     this.auth.login(data).subscribe({
       next: (res: any) => {
-        this.message = 'Login Successfully..';
+        // this.message = 'Login Successfully..';
+        this.message = res.message;
+        if(res)
+        {
+          this.utills.showSuccess(this.message)
+        }
         console.log('API Response:', res);
       },
       error: (err: any) => {
